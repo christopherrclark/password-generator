@@ -67,26 +67,9 @@ function generatePassword(){
   return finalPassword
 }
 
-
-
-
-
-
-
-
-
-
-
-
 // use a loop to grab a random characters x number of times
 
 //   finalPassword += 
-
-
-
-// Your work starts here
-
-
 
 // Write password to the #password input
 function writePassword() {
