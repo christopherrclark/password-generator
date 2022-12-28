@@ -4,17 +4,15 @@ var numberOfChars;
 var okToUseSpecialChars;
 var okToUseNumeric;
 var okToUseLowercase;
-var okToUseuppercase;
-var massArray
+var okToUseUppercase;
+var massArray = [];
 var finalPassword = "";
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
 var numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",];
 var special = ["!", "@", "#", "$", "%", "^", "&", "*", "(", "(", "_", "-", "+", "=", "{", "}", "[", "]", "|", ";", ":", "<", ",", ">", ".", "?", "/",];
 
-
-
-// use global variables to list out all possible:
+// used global variables to list out all possible:
    // special characters
    // lower case letters 
    // upper case letters 
@@ -32,18 +30,43 @@ function askQuestions(){
     okToUseLowercase = confirm("Do you want to use lowercase?");
     okToUseUppercase = confirm("Do you want to use uppercase?");
   }
-  if(okToUseSpecialChars == false && okToUseNumeric == false && okToUseLowercase == false && okToUseUppercase){
+  if(okToUseSpecialChars == false && okToUseNumeric == false && okToUseLowercase == false && okToUseUppercase == false){
     alert("you must make a selection");
     askQuestions()
   }
 }
 
+// created if/else statements to ask questions for user response 
+
 function createPassword(){
-
+  massArray = []
   if(okToUseSpecialChars){
-
+    massArray = massArray.concat(special)
   }
+  if(okToUseNumeric){
+    massArray = massArray.concat(numeric)
+  }
+  if(okToUseLowercase){
+    massArray = massArray.concat(lowercase)
+  } 
+  if(okToUseUppercase){
+    massArray = massArray.concat(uppercase)
+  }    
 }
+
+// created a mass array to concatinate variables of different characters
+
+function generatePassword(){
+  askQuestions();
+  createPassword ();
+  finalPassword = ""
+  for( i=0; i < numberOfChars; i++ ){
+    finalPassword = finalPassword + massArray [Math.floor (Math.random()*massArray.length)]
+  }
+  console.log (finalPassword);
+  return finalPassword
+}
+
 
 
 
@@ -62,10 +85,7 @@ function createPassword(){
 
 
 // Your work starts here
-function generatePassword(){
-  askQuestions();
 
-}
 
 
 // Write password to the #password input
